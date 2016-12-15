@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
     ];
+  programs.bash.enableCompletion = true;
   environment = {
     systemPackages = let
         vim = import ./packages/vim/default.nix pkgs;
