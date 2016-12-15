@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+sudo bash -c "NIXOS_CONFIG=$NIXOS_CONFIG nixos-rebuild switch"
+

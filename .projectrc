@@ -1,0 +1,5 @@
+# vi: syntax=sh
+
+alias testconf='sudo nixos-rebuild test -I ./configuration.nix'
+export NIXOS_CONFIG=`realpath ./configuration.nix`
+
