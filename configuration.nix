@@ -41,6 +41,11 @@ exec term -e sh -c "tmux -q has-session && exec tmux attach-session || exec tmux
     };
   };
 
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.chromium.enableAdobeFlash = true;
   boot = {
