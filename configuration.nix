@@ -11,12 +11,11 @@
         terminal = import ./packages/terminal.nix pkgs;
       in
         (with pkgs; [
-          gnome3.gnome_terminal gnome3.file-roller gnome3.gnome-tweak-tool
+          gnome3.file-roller gnome3.gnome-tweak-tool
           xclip zsh fzf tmux tldr
           git tig
-          zip unzip
+          zip unzip openssl
           vim
-          chromium
           htop
           terminal
         ]);
@@ -31,7 +30,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.chromium.enableAdobeFlash = true;
   boot = {
     cleanTmpDir = true;
     loader = {
