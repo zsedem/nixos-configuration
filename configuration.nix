@@ -8,23 +8,7 @@
   environment = {
     systemPackages = let
         vim = import ./packages/vim/default.nix pkgs;
-        termContent = ''#!/bin/sh
-exec st -f "monofur:pixelsize=27:antialias=true:autohint=true" "$@"
-'';
-        attachTmux = ''#!/bin/sh
-unset TMUX
-exec term -e sh -c "tmux -q has-session && exec tmux attach-session || exec tmux"
-'';
-
-        term = pkgs.stdenv.lib.overrideDerivation pkgs.st  (attrs: {
-           installPhase = ''
-             TERMINFO=$out/share/terminfo make install PREFIX=$out
-             echo '${termContent}' > $out/bin/term
-             chmod +x $out/bin/term
-             echo '${attachTmux}' > $out/bin/attach-tmux
-             chmod +x $out/bin/attach-tmux
-           '';
-        });
+        terminal = import ./packages/terminal.nix pkgs;
       in
         (with pkgs; [
           gnome3.gnome_terminal gnome3.file-roller gnome3.gnome-tweak-tool
@@ -34,7 +18,7 @@ exec term -e sh -c "tmux -q has-session && exec tmux attach-session || exec tmux
           vim
           chromium
           htop
-          term
+          terminal
         ]);
     gnome3 = {
       excludePackages = pkgs.gnome3.optionalPackages;
