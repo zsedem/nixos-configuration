@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
   programs.bash.enableCompletion = true;
   environment = {
