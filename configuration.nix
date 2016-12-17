@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./desktops/gnome.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
   programs.bash.enableCompletion = true;
@@ -82,19 +83,8 @@
       };
       desktopManager.gnome3 = {
         enable = true;
-     };
+      };
     };
-    gnome3 = {
-      gnome-documents.enable = false;
-      gnome-user-share.enable = false;
-      gnome-keyring.enable = true;
-      gnome-online-accounts.enable = false;
-      seahorse.enable = false;
-      tracker.enable = false;
-    };
-    telepathy.enable = false;
-    geoclue2.enable = false;
-    packagekit.enable = false;
   };
 
   virtualisation.docker.enable = true;
