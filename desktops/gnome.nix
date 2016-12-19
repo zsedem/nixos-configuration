@@ -8,6 +8,10 @@
           [org.gnome.desktop.peripherals.touchpad]
           natural-scroll=false
           tap-to-click=true
+
+          [org.gnome.desktop.wm.keybindings]
+          switch-to-workspace-right=[""]
+          switch-to-workspace-left=[""]
          '';
   services.gnome3 = {
       gnome-keyring.enable = true;
