@@ -7,16 +7,28 @@
       ./desktops/gnome.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
-  programs.bash.enableCompletion = true;
+  boot = {
+    cleanTmpDir = true;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
+    plymouth.enable = true;
+    initrd.luks.devices = [
+      { name = "LinuxDrive"; device = "/dev/sda2"; preLVM = true; }
+    ];
+  };
+
+
   environment = {
     systemPackages = let
         vim = import ./packages/vim/default.nix pkgs;
         terminal = import ./packages/terminal.nix pkgs;
       in
         (with pkgs; [
-          gnome3.file-roller gnome3.gnome-tweak-tool
+          gnome3.file-roller gnome3.gnome-tweak-tool google-chrome
           xclip zsh fzf tmux tldr
-          git tig
+          git tig git-review
           zip unzip openssl
           vim
           htop
@@ -32,17 +44,8 @@
     options = "--delete-older-than 7d";
   };
 
-  nixpkgs.config.allowUnfree = true;
-  boot = {
-    cleanTmpDir = true;
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-    };
-    plymouth.enable = true;
-    initrd.luks.devices = [
-      { name = "LinuxDrive"; device = "/dev/sda2"; preLVM = true; }
-    ];
+  nixpkgs.config = {
+    allowUnfree = true;
   };
 
   security.sudo = {
@@ -86,8 +89,7 @@
       };
     };
   };
-
-  virtualisation.docker.enable = true;
+  programs.bash.enableCompletion = true;
 
   users.extraUsers.zsedem = {
     isNormalUser = true;
@@ -105,4 +107,6 @@
       dates = "12:00";
     };
   };
+
+  virtualisation.docker.enable = true;
 }
