@@ -42,6 +42,7 @@
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 7d";
+    dates = "12:30";
   };
 
   nixpkgs.config = {
