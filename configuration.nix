@@ -30,6 +30,7 @@
           xclip zsh fzf tmux tldr
           git tig git-review
           zip unzip openssl
+          oraclejdk8
           vim
           htop
           terminal
