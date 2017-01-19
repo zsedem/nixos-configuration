@@ -28,7 +28,13 @@
         (with pkgs; [
           gnome3.file-roller gnome3.gnome-tweak-tool google-chrome
           xclip zsh fzf tmux tldr
-          git tig git-review
+          (git.override {
+             guiSupport = true;
+             svnSupport = false;
+             sendEmailSupport = false;
+             pythonSupport = false;
+             withManual = false;
+          }) tig git-review
           zip unzip openssl
           oraclejdk8
           vim
