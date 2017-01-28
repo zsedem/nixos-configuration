@@ -17,14 +17,14 @@
           clock-show-date=true
 
           [org.gnome.desktop.background]
-          picture-uri='file:///home/zsedem/Pictures/1473440846117.jpg'
+          picture-uri='file:///etc/nixos/desktops/assets/background.jpg'
           color-shading-type='solid'
           primary-color='#000000000000'
           picture-options='zoom'
           secondary-color='#000000000000'
 
           [org.gnome.desktop.screensaver]
-          picture-uri='file:///home/zsedem/Pictures/1473440846117.jpg'
+          picture-uri='file:///etc/nixos/desktops/assets/background.jpg'
           color-shading-type='solid'
           primary-color='#000000000000'
           picture-options='zoom'
