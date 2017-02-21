@@ -38,7 +38,7 @@
           zip unzip openssl
           oraclejdk8
           vim
-          htop
+          htop pstree telnet dialog
           terminal
         ]);
     gnome3 = {
@@ -67,8 +67,6 @@
   };
 
   time.timeZone = "Europe/Budapest";
-
-  # List packages installed in system profile. To search by name, run: $ nix-env -qaP | grep wget
 
   fonts = {
     enableFontDir = true;
