@@ -1,7 +1,0 @@
-# vi: syntax=sh
-
-export NIXOS_CONFIG=`realpath ./configuration.nix`
-function testconf() {
-    sudo bash -c "NIXOS_CONFIG=$NIXOS_CONFIG nixos-rebuild test --show-trace"
-}
-
