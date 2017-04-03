@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./desktops/gnome.nix
+      ./desktops/kde.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
   boot = {
@@ -13,7 +13,6 @@
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
     };
-    plymouth.enable = true;
     initrd.luks.devices = [
       { name = "LinuxDrive"; device = "/dev/sda2"; preLVM = true; }
     ];
@@ -26,7 +25,7 @@
         terminal = import ./packages/terminal.nix pkgs;
       in
         (with pkgs; [
-          gnome3.file-roller gnome3.gnome-tweak-tool google-chrome
+          google-chrome
           xclip zsh fzf tmux tldr
           (git.override {
              guiSupport = true;
@@ -41,9 +40,6 @@
           htop pstree telnet dialog
           terminal
         ]);
-    gnome3 = {
-      excludePackages = pkgs.gnome3.optionalPackages;
-    };
   };
 
   nix.gc = {
@@ -81,22 +77,8 @@
     openssh.enable = true;
     printing.enable = true;
     udisks2.enable = true;
-    xserver = {
-      enable = true;
-      displayManager.gdm = {
-        enable = true;
-        autoLogin = {
-          enable = true;
-          user = "zsedem";
-        };
-      };
-      desktopManager.gnome3 = {
-        enable = true;
-      };
-    };
   };
   programs.bash.enableCompletion = true;
-
   users.extraUsers.zsedem = {
     isNormalUser = true;
     description = "Zsigmond Ádám Olivér";
@@ -107,7 +89,7 @@
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system = {
-    stateVersion = "16.09";
+    stateVersion = "17.03";
     autoUpgrade = {
       enable = true;
       dates = "12:00";

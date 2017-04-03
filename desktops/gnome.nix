@@ -1,7 +1,19 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
+  services.xserver = {
+    enable = true;
+    displayManager.gdm = {
+      enable = true;
+      autoLogin = {
+        enable = true;
+        user = "zsedem";
+      };
+    };
+    desktopManager.gnome3 = {
+      enable = true;
+
+      extraGSettingsOverrides = ''
           [org.gnome.desktop.input-sources]
           sources=[('xkb', 'us'), ('xkb', 'hu')]
 
@@ -36,6 +48,8 @@
           [org.gnome.shell.window-switcher]
           current-workspace-only=false
          '';
+     };
+  };
   services.gnome3 = {
       gnome-keyring.enable = true;
       gnome-documents.enable = false;
@@ -47,4 +61,5 @@
   services.telepathy.enable = false;
   services.geoclue2.enable = false;
   services.packagekit.enable = false;
+  services.udisks2.enable = true;
 }
