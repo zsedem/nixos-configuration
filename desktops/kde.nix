@@ -16,6 +16,7 @@
           enable = true;
       };
     };
+  hardware.pulseaudio.enable = true;
   environment.systemPackages  = [ pkgs.ksshaskpass ];
   networking.networkmanager.enable = true;
 }
