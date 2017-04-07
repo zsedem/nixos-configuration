@@ -6,12 +6,8 @@
       enable = true;
       displayManager.sddm = {
           enable = true;
-          extraConfig = ''
-                        [Autologin]
-                        User=zsedem
-                        Session=plasma.desktop
-                        '';
-      };
+          autoNumlock = false;
+     };
       desktopManager.plasma5 = {
           enable = true;
       };
