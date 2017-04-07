@@ -37,7 +37,7 @@
           zip unzip openssl
           oraclejdk8
           vim
-          htop pstree telnet dialog
+          htop pstree tree telnet dialog
           terminal
         ]);
   };
