@@ -5,10 +5,6 @@
     enable = true;
     displayManager.gdm = {
       enable = true;
-      autoLogin = {
-        enable = true;
-        user = "zsedem";
-      };
     };
     desktopManager.gnome3 = {
       enable = true;
