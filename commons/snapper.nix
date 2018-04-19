@@ -9,6 +9,8 @@
       subvolume = "/home";
       extraConfig = ''
         ALLOW_GROUPS="users"
+        TIMELINE_CREATE="yes"
+        TIMELINE_CLEANUP="yes"
         TIMELINE_MIN_AGE="1800"
         TIMELINE_LIMIT_HOURLY="5"
         TIMELINE_LIMIT_DAILY="2"
@@ -21,6 +23,8 @@
       subvolume = "/";
       extraConfig = ''
         ALLOW_GROUPS="wheel"
+        TIMELINE_CREATE="yes"
+        TIMELINE_CLEANUP="yes"
         TIMELINE_MIN_AGE="1800"
         TIMELINE_LIMIT_HOURLY="3"
         TIMELINE_LIMIT_DAILY="3"
