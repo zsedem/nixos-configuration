@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../commons/networkmanager.nix
+  ];
   security.pam.services.zsedem.enableKwallet = true;
   services.xserver = {
       enable = true;
@@ -14,5 +17,4 @@
     };
   hardware.pulseaudio.enable = true;
   environment.systemPackages  = [ pkgs.ksshaskpass ];
-  networking.networkmanager.enable = true;
 }

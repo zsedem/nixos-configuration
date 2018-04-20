@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../commons/networkmanager.nix
+  ];
+
   services.xserver = {
     enable = true;
     displayManager.gdm = {
