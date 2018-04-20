@@ -1,0 +1,1 @@
+NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix nixos-rebuild dry-activate

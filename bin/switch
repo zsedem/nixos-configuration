@@ -1,0 +1,10 @@
+NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix nixos-rebuild dry-activate || exit 1
+
+set -x
+sudo rm -rf /etc/nixos.bck
+sudo mv /etc/nixos /etc/nixos.bck
+sudo mkdir /etc/nixos
+sudo cp -r $HOME/projects/nixos-configuration/* /etc/nixos/
+
+sudo nixos-rebuild switch
+
