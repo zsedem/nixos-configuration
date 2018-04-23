@@ -18,6 +18,8 @@
   environment.systemPackages = let
       stWithTmux = import ./packages/terminal.nix pkgs;
     in
-      [ stWithTmux ];
+      [ stWithTmux
+        (import ./packages/mill.nix)
+      ];
 
 }
