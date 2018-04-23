@@ -9,9 +9,11 @@
         (with pkgs; [
           xclip fzf tmux tldr
           gitAndTools.gitFull gitAndTools.diff-so-fancy tig
-          zip unzip openssl
+          zip unzip
+          openssl gnupg
           vim
-          htop pstree tree  dialog
+          htop pstree
+          file tree dialog
           telnet
           pciutils usbutils
         ]);
