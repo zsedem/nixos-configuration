@@ -11,7 +11,9 @@
           gitAndTools.gitFull gitAndTools.diff-so-fancy tig
           zip unzip openssl
           vim
-          htop pstree tree telnet dialog
+          htop pstree tree  dialog
+          telnet
+          pciutils usbutils
         ]);
   };
   programs.zsh.enable = true;
