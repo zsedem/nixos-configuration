@@ -8,7 +8,7 @@
       in
         (with pkgs; [
           xclip fzf tmux tldr
-          gitAndTools.gitFull gitAndTools.diff-so-fancy tig
+          gitAndTools.gitFull gitAndTools.diff-so-fancy gitAndTools.hub tig
           zip unzip
           openssl gnupg
           vim
