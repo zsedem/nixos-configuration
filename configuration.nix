@@ -11,6 +11,7 @@
       ./commons/systemdboot.nix
       ./commons/command-line-utils.nix
       ./commons/docker.nix
+      ./commons/powertop.nix
       ./users/azsigmond.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
