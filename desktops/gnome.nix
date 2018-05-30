@@ -57,6 +57,7 @@
       gnome-online-accounts.enable = false;
       seahorse.enable = false;
       tracker.enable = false;
+      chrome-gnome-shell.enable = true;
     };
   services.telepathy.enable = false;
   services.geoclue2.enable = false;
