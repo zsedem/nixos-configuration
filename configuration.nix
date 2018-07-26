@@ -21,7 +21,7 @@
     in
       with pkgs; [ stWithTmux
         (import ./packages/mill.nix)
-        apacheKafka_0_11
+        apacheKafka
         docker_compose
         google-chrome
         graphviz
