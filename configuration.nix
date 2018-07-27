@@ -27,7 +27,6 @@
         graphviz
         jq
         kafkacat
-        kubectl
         libnotify
         mc
         oraclejdk8
