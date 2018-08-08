@@ -33,7 +33,6 @@
         postgresql
         postman
         awscli
-        sbt
         slack
         vault
         vlc
