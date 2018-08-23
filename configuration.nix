@@ -26,12 +26,12 @@
         google-chrome
         graphviz
         jq
+        scalafmt
         kafkacat
         libnotify
         mc
         oraclejdk8
         postgresql
-        postman
         awscli
         slack
         vault
