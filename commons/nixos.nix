@@ -36,4 +36,5 @@
   time.timeZone = "Europe/Budapest";
 
   programs.bash.enableCompletion = true;
+  boot.tmpOnTmpfs = true;
 }
