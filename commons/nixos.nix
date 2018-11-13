@@ -5,7 +5,7 @@
 
 {
   system = {
-    stateVersion = "18.03";
+    stateVersion = "18.09";
     autoUpgrade = {
       enable = true;
       dates = "12:00";
