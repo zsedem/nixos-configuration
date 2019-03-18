@@ -21,6 +21,11 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    packageOverrides = pkgs: rec {
+      jre = pkgs.oraclejdk8;
+      jdk = pkgs.oraclejdk8;
+    };
+    oraclejdk.accept_license = true;
   };
 
   security.sudo = {
