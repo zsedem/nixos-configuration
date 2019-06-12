@@ -17,6 +17,11 @@
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
 
+  networking.extraHosts =
+      ''
+      127.0.0.1 localhost kafka zookeeper
+      '';
+
   environment.systemPackages = let
       stWithTmux = import ./packages/terminal.nix pkgs;
     in
