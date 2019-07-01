@@ -28,6 +28,14 @@
     enable = true;
   };
 
+  services.usbguard = {
+    enable = true;
+    # Generate a file with
+    #   $ sudo usbguard generate-policy > commons/usbguard.rules
+    rules = lib.readFile ./usbguard.rules;
+    IPCAllowedGroups = [ "wheel" ];
+  };
+
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
