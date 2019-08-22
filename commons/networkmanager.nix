@@ -1,6 +1,6 @@
 {  config, pkgs, ...}:
 
 {
-  networking.networkmanager.dns = "dnsmasq";
+  services.unbound.enable = true;
   networking.networkmanager.enable = true;
 }
