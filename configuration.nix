@@ -13,6 +13,7 @@
       ./commons/docker.nix
       ./commons/powertop.nix
       ./commons/print.nix
+      ./local.nix
       ./t470.nix
       ./users/azsigmond.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
