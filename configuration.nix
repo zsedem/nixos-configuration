@@ -29,13 +29,11 @@
     in
       with pkgs; [ stWithTmux
         (import ./packages/mill.nix)
-        apacheKafka
         docker_compose
         google-chrome
         graphviz
         jq
         scalafmt
-        kafkacat
         libnotify
         mc
         openjdk
