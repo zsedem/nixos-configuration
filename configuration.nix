@@ -38,7 +38,6 @@
         mc
         openjdk
         postgresql
-        awscli
         slack
         vault
         vlc
