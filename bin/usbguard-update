@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+cd "$(dirname $(dirname "$0"))"
+realpath .
+
+touch commons/usbguard.rules
+NEW_FILE=$(mktemp)
+SUDO_COMMAND="sudo usbguard generate-policy"
+echo Running $SUDO_COMMAND
+eval $SUDO_COMMAND > $NEW_FILE
+diff -u --color commons/usbguard.rules $NEW_FILE
+
+read "REPLY?update usbguard.rules file ?"
+if [ $REPLY = "y" ]
+then
+  cp $NEW_FILE commons/usbguard.rules
+  bin/test
+fi
+
+rm $NEW_FILE
+
