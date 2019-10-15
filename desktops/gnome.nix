@@ -52,15 +52,18 @@
   };
   services.gnome3 = {
       gnome-keyring.enable = true;
-      gnome-documents.enable = false;
       gnome-user-share.enable = false;
       gnome-online-accounts.enable = false;
-      seahorse.enable = false;
       tracker.enable = false;
       chrome-gnome-shell.enable = true;
-    };
+  };
+  programs = {
+      seahorse.enable = false;
+      gnome-documents.enable = false;
+  };
   services.telepathy.enable = false;
   services.geoclue2.enable = false;
   services.packagekit.enable = false;
   services.udisks2.enable = true;
+  environment.systemPackages = [ pkgs.gnome3.glib.dev ];
 }

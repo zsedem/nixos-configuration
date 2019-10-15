@@ -3,15 +3,15 @@ with import <nixpkgs> {}; # bring all of Nixpkgs into scope
 stdenv.mkDerivation rec {
   name = "monofur";
   src = fetchurl {
-    url = "http://eurofurence.net/monof_tt.zip";
-    sha256 = "2d41ca991f342f9b74bc01433fba6c371fa7abcd5eaa45d8e71c9b8a2049055a";
+    url = "https://github.com/chrissimpkins/codeface/blob/master/fonts/monofur/monof55.ttf?raw=true";
+    sha256 = "025676779b4ea99781930b6916ce3c575f9bfda77e1d726e8d70032c007b2b44";
   };
     
   buildCommand = ''
-    mkdir -p $out/share/fonts/truetype
-    cd $out/share/fonts/truetype
-    unzip $src
+    mkdir -p $out/share/fonts/truetype/monofur
+    cd $out/share/fonts/truetype/monofur
+    cp $src ./monofur.ttf
   '';
   
-  buildInputs = [ unzip ];
+  buildInputs = [ ];
 }
