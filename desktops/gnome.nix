@@ -65,5 +65,5 @@
   services.geoclue2.enable = false;
   services.packagekit.enable = false;
   services.udisks2.enable = true;
-  environment.systemPackages = [ pkgs.gnome3.glib.dev ];
+  environment.systemPackages = [ pkgs.gnome3.glib.dev pkgs.pinentry_gnome ];
 }
