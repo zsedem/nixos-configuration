@@ -10,7 +10,7 @@
     options = "--delete-older-than 20d";
     dates = "Mon 12:00:00";
   };
-  nix.allowedUsers = [ "@wheel" ];
+  nix.allowedUsers = [ "@users" ];
   nix.autoOptimiseStore = true;
 
   nixpkgs.config = {
