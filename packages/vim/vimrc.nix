@@ -24,11 +24,12 @@ set list
 set listchars=tab:▸▸,trail:·
 set number
 set ruler
-set shiftwidth=4
+set shiftwidth=2
 set showbreak=↪\
 set showmode
 set smartcase
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set timeout
 set timeoutlen=400
 set title
