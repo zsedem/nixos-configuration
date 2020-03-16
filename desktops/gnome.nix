@@ -23,6 +23,8 @@
 
           [org.gnome.desktop.wm.keybindings]
           switch-to-workspace-right=[""]
+          switch-to-workspace-up=[""]
+          switch-to-workspace-down=[""]
           switch-to-workspace-left=[""]
 
           [org.gnome.desktop.interface]
