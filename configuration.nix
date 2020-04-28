@@ -42,4 +42,10 @@
         vlc
       ];
 
+  environment.etc."xdg/mimeapps.list" = {
+    text = ''
+      [Default Applications]
+      x-scheme-handler/zoomtg=us.zoom.Zoom.desktop;
+    '';
+  };
 }
