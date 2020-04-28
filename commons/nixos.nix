@@ -23,7 +23,7 @@
   };
 
   services.usbguard = {
-    enable = true;
+    enable = false;
     # Generate a file with
     #   $ sudo usbguard generate-policy > commons/usbguard.rules
     rules = lib.readFile ./usbguard.rules;
@@ -40,4 +40,7 @@
 
   programs.bash.enableCompletion = true;
   boot.tmpOnTmpfs = true;
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 27960; to = 27969; } # Urban terror
+  ];
 }
