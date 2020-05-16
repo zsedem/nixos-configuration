@@ -3,7 +3,7 @@
 {
   imports = [ ./nixos-upgrade.nix ];
   system = {
-    stateVersion = "19.03";
+    stateVersion = "20.03";
   };
   nix.gc = {
     automatic = true;
@@ -30,9 +30,9 @@
     IPCAllowedGroups = [ "wheel" ];
   };
 
+  console.font = "Lat2-Terminus16";
+  console.keyMap = "us";
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 

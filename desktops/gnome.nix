@@ -60,6 +60,7 @@
       chrome-gnome-shell.enable = true;
   };
   programs = {
+      geary.enable = false;
       seahorse.enable = false;
       gnome-documents.enable = false;
   };

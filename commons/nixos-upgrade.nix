@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./nixos-upgrade.nix ];
   systemd.services.nixos-upgrade = {
     description = "Custom NixOS Upgrade";
     restartIfChanged = false;

@@ -11,7 +11,7 @@
       ./commons/systemdboot.nix
       ./commons/command-line-utils.nix
       ./commons/docker.nix
-      ./commons/print.nix
+#      ./commons/print.nix
       ./local.nix
       ./t470.nix
       ./users/azsigmond.nix
