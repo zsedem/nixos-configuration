@@ -12,6 +12,7 @@
       ./commons/command-line-utils.nix
       ./commons/docker.nix
 #      ./commons/print.nix
+      ./packages/steam.nix
       ./local.nix
       ./t470.nix
       ./users/azsigmond.nix
@@ -48,4 +49,5 @@
       x-scheme-handler/zoomtg=us.zoom.Zoom.desktop;
     '';
   };
+
 }
