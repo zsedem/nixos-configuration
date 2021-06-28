@@ -10,7 +10,7 @@
     displayManager.gdm = {
       enable = true;
     };
-    desktopManager.gnome3 = {
+    desktopManager.gnome = {
       enable = true;
 
       extraGSettingsOverrides = ''
@@ -52,7 +52,7 @@
          '';
      };
   };
-  services.gnome3 = {
+  services.gnome = {
       gnome-keyring.enable = true;
       gnome-user-share.enable = false;
       gnome-online-accounts.enable = false;

@@ -3,7 +3,7 @@
 {
   imports = [ ./nixos-upgrade.nix ];
   system = {
-    stateVersion = "20.09";
+    stateVersion = "21.05";
   };
   nix.gc = {
     automatic = true;

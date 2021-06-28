@@ -1,4 +1,4 @@
-{ pkgs, makeDesktopItem, ... }:
+{ pkgs, lib, makeDesktopItem, ... }:
 
 let
   termContent = ''
@@ -37,6 +37,6 @@ let
 
 
 in
-  pkgs.stdenv.lib.overrideDerivation pkgs.st (attrs: {
+  lib.overrideDerivation pkgs.st (attrs: {
            installPhase = installPhaseScript;
   })

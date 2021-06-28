@@ -35,7 +35,7 @@
         scalafmt
         libnotify
         mc
-        openjdk
+        openjdk11
         postgresql
         slack
         vault

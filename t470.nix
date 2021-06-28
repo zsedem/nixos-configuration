@@ -51,6 +51,7 @@ in {
   systemd.services."lenovo_fix".wantedBy = [ "multi-user.target" ];
 
   environment.etc."lenovo_fix.conf".source = "${throttled}/etc/lenovo_fix.conf";
+  services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
     settings = {
