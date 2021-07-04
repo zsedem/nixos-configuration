@@ -43,4 +43,5 @@
   networking.firewall.allowedUDPPortRanges = [
     { from = 27960; to = 27969; } # Urban terror
   ];
+  services.journald.extraConfig = "SystemMaxUse=256M";
 }
