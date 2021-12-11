@@ -1,4 +1,5 @@
-NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix nixos-rebuild dry-activate || exit 1
+#!/usr/bin/env bash
+# NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix nixos-rebuild dry-activate || exit 1
 
 set -x
 sudo rm -rf /etc/nixos.bck

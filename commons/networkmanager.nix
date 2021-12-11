@@ -1,6 +1,6 @@
 {  config, pkgs, ...}:
 
 {
-  services.unbound.enable = true;
+  #services.unbound.enable = true;
   networking.networkmanager.enable = true;
 }
