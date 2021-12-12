@@ -7,15 +7,29 @@
         vim = import ../packages/vim/default.nix pkgs;
       in
         (with pkgs; [
-          xclip fzf tmux tldr
-          gitAndTools.gitFull gitAndTools.diff-so-fancy gitAndTools.hub tig
-          zip unzip
-          openssl gnupg
-          vim
-          htop pstree
-          file tree dialog
+          bat 
+          delta
+          dialog
+          file
+          fzf
+          jq
+          gh 
+          gitAndTools.gitFull 
+          gnupg
+          htop
+          openssl
+          pciutils
+          pv
           telnet
-          pciutils usbutils
+          tig
+          tldr
+          tmux
+          tree
+          unzip
+          usbutils
+          vim
+          xclip
+          zip
         ]);
   };
   programs.zsh.enable = true;
