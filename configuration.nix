@@ -7,6 +7,7 @@
       ./commons/fonts.nix
       ./commons/gui-utils.nix
       ./commons/hiya.nix
+      ./commons/rust.nix
       ./commons/nixos.nix
       ./commons/snapper.nix
       ./commons/systemdboot.nix
