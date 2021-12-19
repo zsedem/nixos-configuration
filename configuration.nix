@@ -14,7 +14,6 @@
       ./desktops/gnome.nix
       ./hardware-configuration.nix
       ./hardware/t470.nix
-      ./packages/steam.nix
       ./users/azsigmond.nix
       <nixpkgs/nixos/modules/programs/command-not-found/command-not-found.nix>
     ];
