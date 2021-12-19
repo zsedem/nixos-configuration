@@ -7,6 +7,7 @@
       rustup
       gcc
       llvmPackages.bintools-unwrapped
+      cmakeMinimal
     ]);
   };
 }
