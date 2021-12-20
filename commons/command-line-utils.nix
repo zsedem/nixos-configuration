@@ -1,10 +1,10 @@
 { config, ... }:
 
-let 
+let
   # I only follow the stable nixos release branch, because I want a stable OS, but
   # when it comes to interactive command line tools, the newer the better.
-  pkgs = import <nixos-unstable> {};
-  
+  pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
+
 in {
 
   environment = {
