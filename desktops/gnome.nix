@@ -9,6 +9,7 @@
     enable = true;
     displayManager.gdm = {
       enable = true;
+      wayland = false; # Screensharing is broken, also flameshot does not work
     };
     desktopManager.gnome = {
       enable = true;
