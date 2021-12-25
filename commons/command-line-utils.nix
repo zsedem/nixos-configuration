@@ -63,6 +63,7 @@ in {
           tldr
           tmux
           tree
+          python3
           unzip
           usbutils
           vim

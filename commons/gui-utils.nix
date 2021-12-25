@@ -11,6 +11,7 @@ in {
         stWithTmux
         flameshot
         google-chrome
+        deluge
         vlc
       ];
 
