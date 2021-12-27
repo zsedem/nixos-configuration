@@ -5,6 +5,28 @@ let
   # when it comes to interactive command line tools, the newer the better.
   pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
 
+  batCacheWithHocon = pkgs.stdenv.mkDerivation {
+    name = "bat-config-with-hocon";
+    src = pkgs.fetchFromGitHub {
+      owner = "NeQuissimus";
+      repo = "Sublime-Hocon";
+      rev = "89169658fb2be384b7e85afacd5536149e248b8b";
+      sha256 = "185mk9br1wfbcw0cyz6b43dfscy6a2gnfqgw02n1yjyfwsbbzswx";
+    };
+    buildPhase = ''
+      export BAT_CACHE_PATH=./cache-dir
+      export HOME=./
+      export BAT_CONFIG_DIR=./.config/bat
+      mkdir -p "$BAT_CONFIG_DIR/syntaxes/HOCON"
+      mkdir -p $BAT_CACHE_PATH
+      cp -r ./*.sublime-syntax "$BAT_CONFIG_DIR/syntaxes/HOCON"
+      ls -Ral $(${pkgs.bat}/bin/bat --config-dir)
+      ${pkgs.bat}/bin/bat cache --build
+    '';
+    installPhase = ''
+      cp -r ./cache-dir $out
+    '';
+  };
 in {
 
   environment = {
@@ -40,9 +62,19 @@ in {
                               pkgs.skim
                             ];
                           };
+        batConfigured = pkgs.symlinkJoin {
+                            name = "bat";
+                            paths = [
+                              (pkgs.writeShellScriptBin "bat" ''
+                                export BAT_CONFIG_PATH=${./assets/bat-config}
+                                export BAT_CACHE_PATH=${batCacheWithHocon}
+                                exec ${pkgs.bat}/bin/bat "$@"
+                              '')
+                            ];
+                        };
       in
         (with pkgs; [
-          bat
+          batConfigured
           bat-extras.batgrep
           delta
           dialog
