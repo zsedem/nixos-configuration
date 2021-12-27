@@ -78,13 +78,15 @@ in {
           bat-extras.batgrep
           delta
           dialog
+          tab-rs
+          alacritty
           fd
           file
           ripgrep
           skimAlternatives
           jq
-          gh 
-          gitAndTools.gitFull 
+          gh
+          gitAndTools.gitFull
           gnupg
           htop
           openssl
