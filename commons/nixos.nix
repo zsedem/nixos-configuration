@@ -45,5 +45,9 @@
   ];
   services.journald.extraConfig = "SystemMaxUse=256M";
 
-  environment.systemPackages = [ pkgs.nix-prefetch-git ];
+  environment.systemPackages = [ 
+    pkgs.nix-prefetch-git
+    pkgs.nixpkgs-fmt
+    pkgs.rnix-lsp
+  ];
 }
