@@ -7,6 +7,14 @@ current installations, therefore it might even throw some error
 during rebuild if you just copy-paste it.
 
 # Reusable parts
+## Locals folder
+In this folder everything is imported by the `default.nix` 
+expression.
+
+## Importing certificates
+To make it easier to add certificates the `commons/nixos/certs.nix` 
+is created to import all certificates added to the certs folder
+
 ## VS Code wrapper script
 Do you want different instances of VSCode at the same time?
 
