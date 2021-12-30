@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./nixos-upgrade.nix ];
+  imports = [
+    ./upgrade.nix
+    ./certs.nix
+  ];
   system = {
     stateVersion = "21.11";
   };
@@ -45,7 +48,7 @@
   ];
   services.journald.extraConfig = "SystemMaxUse=256M";
 
-  environment.systemPackages = [ 
+  environment.systemPackages = [
     pkgs.nix-prefetch-git
     pkgs.nixpkgs-fmt
     pkgs.rnix-lsp

@@ -8,7 +8,7 @@
       ./commons/gui-utils.nix
       ./commons/hiya.nix
       ./commons/rust.nix
-      ./commons/nixos.nix
+      ./commons/nixos
       ./commons/snapper.nix
       ./commons/systemdboot.nix
       ./commons/vscode.nix
