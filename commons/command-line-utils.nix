@@ -36,6 +36,7 @@ in {
                             name = "skim";
                             paths = [
                               (pkgs.writeShellScriptBin "git-rg" ''
+                                  SHELL=${pkgs.bash}/bin/bash
                                   set -e # Easiest way to not enter vim if sk exits due to interrupt
                                   SK_RESULT="$(
                                     ${pkgs.ripgrep}/bin/rg \
@@ -50,11 +51,6 @@ in {
                                   else
                                     exit 1
                                   fi
-                              '')
-                              (pkgs.writeShellScriptBin "sk-nvim" ''
-                                export SKIM_DEFAULT_COMMAND="${pkgs.fd}/bin/fd --type f -I"
-                                exec nvim -p $( ${pkgs.skim}/bin/sk -m \
-                                  --preview '${pkgs.bat}/bin/bat --color=always --style=numbers --line-range=:500 {}')
                               '')
                               (pkgs.writeShellScriptBin "fzf" ''
                                 exec ${pkgs.skim}/bin/sk "$@"
