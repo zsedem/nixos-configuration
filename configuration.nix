@@ -11,6 +11,7 @@
       ./commons/nixos.nix
       ./commons/snapper.nix
       ./commons/systemdboot.nix
+      ./commons/vscode.nix
       ./desktops/gnome.nix
       ./hardware-configuration.nix
       ./hardware/t470.nix
