@@ -1,8 +1,7 @@
-{pkgs, common-plugins}:
-{name, exts}:
+{pkgs, name, plugins}:
 let
      vscode-package = pkgs.vscode-with-extensions.override {
-        vscodeExtensions = exts ++ common-plugins;
+        vscodeExtensions = plugins;
      };
 in
     pkgs.writeShellScriptBin "code-${name}" ''
