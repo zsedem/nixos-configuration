@@ -85,6 +85,7 @@ in {
           gitAndTools.gitFull
           gnupg
           htop
+          oathToolkit
           openssl
           pciutils
           pv
