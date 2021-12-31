@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 with lib;
-let 
+let
     pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
     flags = config.zsedem;
     plugins = [];
@@ -12,11 +12,19 @@ let
               version = "0.0.1";
               sha256 = "0mgyj7kxsx4acxc9nx63pwcwp9ckvrawj9pjln8wrnj5w9cdvbcv";
             }];
+    tim-koehler = {
+        helm-intellisense = head (pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+            name = "helm-intellisense";
+            publisher = "tim-koehler";
+            version = "0.13.2";
+            sha256 = "0g320yzmlb3gy18h4xvzzcxpbf16984ddvpkdizp0l9di4jzd1c8";
+        }]);
+    };
 in {
   options.zsedem = 
     let flag = mkOption { type = types.bool; default = true; };
-    in { scala = flag; rust = flag; nix = flag; };
-  
+    in { scala = flag; rust = flag; nix = flag; k8s = flag; };
+
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
         onlyIf (flags.scala) [
@@ -45,7 +53,19 @@ in {
             (import ../packages/vscode.nix { 
                 inherit pkgs;
                 name = "nix";
-                plugins = hocon ++ [ bbenoist.nix jnoortheen.nix-ide ];
+                plugins = plugins ++ [ bbenoist.nix jnoortheen.nix-ide ];
+            })
+        ] ++ onlyIf (flags.k8s) [
+            kind
+            kubectl
+            kubernetes-helm
+            (import ../packages/vscode.nix { 
+                inherit pkgs;
+                name = "kube";
+                plugins = plugins ++ [ 
+                    tim-koehler.helm-intellisense
+                    redhat.vscode-yaml
+                ];
             })
         ];
   };
