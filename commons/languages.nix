@@ -23,7 +23,7 @@ let
 in {
   options.zsedem = 
     let flag = mkOption { type = types.bool; default = true; };
-    in { scala = flag; rust = flag; nix = flag; k8s = flag; };
+    in { scala = flag; rust = flag; nix = flag; k8s = flag; py = flag; };
 
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
@@ -65,6 +65,14 @@ in {
                 plugins = plugins ++ [ 
                     tim-koehler.helm-intellisense
                     redhat.vscode-yaml
+                ];
+            })
+        ] ++ onlyIf (flags.py) [
+            (import ../packages/vscode.nix { 
+                inherit pkgs;
+                name = "py";
+                plugins = plugins ++ [ 
+                    ms-python.python
                 ];
             })
         ];

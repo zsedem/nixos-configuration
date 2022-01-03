@@ -8,15 +8,17 @@ let
 in {
   options.zsedem.zoom = mkOption { type = types.bool; default = false; };
 
-  environment.systemPackages = with pkgs; [
-    flameshot
-    postman
-    google-chrome
-    deluge
-    vlc
-  ] ++ (if (zoom-enabled) then [zoom-us] else []);
+  config = mkIf zoom-enabled {
+    environment.systemPackages = with pkgs; [
+      flameshot
+      postman
+      google-chrome
+      deluge
+      vlc
+    ] ++ (if (zoom-enabled) then [zoom-us] else []);
 
-  xdg.mime.defaultApplications = if (zoom-enabled) then {
-    "x-scheme-handler/zoomtg" = "us.zoom.Zoom.desktop";
-  } else {};
+    xdg.mime.defaultApplications = if (zoom-enabled) then {
+      "x-scheme-handler/zoomtg" = "us.zoom.Zoom.desktop";
+    } else {};
+  };
 }

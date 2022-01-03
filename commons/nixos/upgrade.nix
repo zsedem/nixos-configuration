@@ -16,6 +16,7 @@
         nixos-rebuild = "${config.system.build.nixos-rebuild}/bin/nixos-rebuild";
       in
         ''
+        nix-channel --update
         ${nixos-rebuild} boot --upgrade --no-build-output
         '';
     startAt = "12:00";
