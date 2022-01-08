@@ -4,7 +4,7 @@ with lib;
 let
     pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
     flags = config.zsedem;
-    plugins = [];
+    plugins = with pkgs.vscode-extensions; [ ms-vsliveshare.vsliveshare ];
     onlyIf = pred: l: if pred then l else [];
     hocon = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
               name = "HOCON";
@@ -21,7 +21,7 @@ let
         }]);
     };
 in {
-  options.zsedem = 
+  options.zsedem =
     let flag = mkOption { type = types.bool; default = true; };
     in { scala = flag; rust = flag; nix = flag; k8s = flag; py = flag; };
 
@@ -50,7 +50,7 @@ in {
             nix-prefetch-git
             nixpkgs-fmt
             rnix-lsp
-            (import ../packages/vscode.nix { 
+            (import ../packages/vscode.nix {
                 inherit pkgs;
                 name = "nix";
                 plugins = plugins ++ [ bbenoist.nix jnoortheen.nix-ide ];
@@ -59,19 +59,19 @@ in {
             kind
             kubectl
             kubernetes-helm
-            (import ../packages/vscode.nix { 
+            (import ../packages/vscode.nix {
                 inherit pkgs;
                 name = "kube";
-                plugins = plugins ++ [ 
+                plugins = plugins ++ [
                     tim-koehler.helm-intellisense
                     redhat.vscode-yaml
                 ];
             })
         ] ++ onlyIf (flags.py) [
-            (import ../packages/vscode.nix { 
+            (import ../packages/vscode.nix {
                 inherit pkgs;
                 name = "py";
-                plugins = plugins ++ [ 
+                plugins = plugins ++ [
                     ms-python.python
                 ];
             })

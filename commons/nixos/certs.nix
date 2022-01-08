@@ -5,7 +5,7 @@ with builtins;
 let
   certs-dir = ../../certs;
   dir-content = attrValues (mapAttrs (name: value: {inherit name; file = certs-dir + "/${name}"; type = value; }) (readDir certs-dir));
-  certificateFiles = 
+  certificateFiles =
     if (pathExists certs-dir) then
       concatMap ({name, file, type}:
         if all (ignoredname: name != ignoredname) [".gitignore" "README.md"]

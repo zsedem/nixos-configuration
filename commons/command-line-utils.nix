@@ -66,6 +66,11 @@ in {
                                 export BAT_CACHE_PATH=${batCacheWithHocon}
                                 exec ${pkgs.bat}/bin/bat "$@"
                               '')
+                              (pkgs.writeShellScriptBin "batman" ''
+                                export BAT_CONFIG_PATH=${./assets/bat-config}
+                                export BAT_CACHE_PATH=${batCacheWithHocon}
+                                exec ${pkgs.bat-extras.batman}/bin/batman "$@"
+                              '')
                             ];
                         };
       in
