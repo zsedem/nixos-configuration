@@ -28,8 +28,8 @@ in {
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
         onlyIf (flags.scala) [
-            (sbt.override { jre = jdk11; })
-            jdk11
+            (sbt.override { jre = jdk; })
+            jdk
             scalafmt
             (import ../packages/vscode.nix {
                 inherit pkgs;
