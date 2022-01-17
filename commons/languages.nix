@@ -4,7 +4,10 @@ with lib;
 let
     pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
     flags = config.zsedem;
-    plugins = with pkgs.vscode-extensions; [ ms-vsliveshare.vsliveshare ];
+    plugins = with pkgs.vscode-extensions; [
+      redhat.vscode-yaml
+    #  ms-vsliveshare.vsliveshare
+    ];
     onlyIf = pred: l: if pred then l else [];
     hocon = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
               name = "HOCON";
@@ -64,7 +67,6 @@ in {
                 name = "kube";
                 plugins = plugins ++ [
                     tim-koehler.helm-intellisense
-                    redhat.vscode-yaml
                 ];
             })
         ] ++ onlyIf (flags.py) [
