@@ -19,11 +19,6 @@
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   networking.hostName = "azsigmond-t470";
-  hardware.pulseaudio = {
-    enable = true;
-    # Only the full build has Bluetooth support, so it must be selected here.
-    package = pkgs.pulseaudioFull;
-  };
   hardware.opengl.enable = true;
   #hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [

@@ -5,5 +5,4 @@ sudo mkdir /etc/nixos
 sudo cp -r $HOME/projects/nixos-configuration/* /etc/nixos/
 
 sudo nixos-rebuild switch
-rm result
 

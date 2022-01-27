@@ -15,6 +15,5 @@
           enable = true;
       };
     };
-  hardware.pulseaudio.enable = true;
   environment.systemPackages  = [ pkgs.ksshaskpass ];
 }
