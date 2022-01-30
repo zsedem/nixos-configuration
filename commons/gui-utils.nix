@@ -12,6 +12,7 @@ in {
     environment.systemPackages = with pkgs; [
       flameshot
       postman
+      firefox
       google-chrome
       deluge
       vlc
