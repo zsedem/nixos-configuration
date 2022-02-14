@@ -9,6 +9,7 @@ with pkgs;
   services.pipewire.alsa.enable = true;
   services.pipewire.jack.enable = true;
 
+  security.rtkit.enable = true;
   programs.noisetorch.enable = true;
   environment.systemPackages = [ noisetorch ];
 }
