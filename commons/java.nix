@@ -30,6 +30,8 @@ let
           -file ${file}
       '') certificateFiles));
   };
+  java8 = pkgs.openjdk8;
+  java17 = pkgs.openjdk17;
 in {
   config = mkIf config.programs.java.enable {
     programs.java.package = choosen-jdk;
@@ -39,6 +41,10 @@ in {
     environment.sessionVariables = {
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd -Djavax.net.ssl.trustStore=/etc/java/cacerts";
     };
+    environment.extraSetup = ''
+      ln -s ${java8}/lib/openjdk $out/lib/openjdk8
+      ln -s ${java17}/lib/openjdk $out/lib/openjdk17
+    '';
   };
 }
 
