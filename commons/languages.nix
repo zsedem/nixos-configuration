@@ -6,6 +6,7 @@ let
     flags = config.zsedem;
     plugins = with pkgs.vscode-extensions; [
       redhat.vscode-yaml
+      zxh404.vscode-proto3
     #  ms-vsliveshare.vsliveshare
     ];
     onlyIf = pred: l: if pred then l else [];
