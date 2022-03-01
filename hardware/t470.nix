@@ -4,6 +4,9 @@
 { config, lib, pkgs, mkDerivation, ... }:
 
 {
+  imports = [
+    <nixos-hardware/lenovo/thinkpad/t470s>
+  ];
   services.throttled.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
