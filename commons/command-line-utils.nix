@@ -94,7 +94,7 @@ in {
           openssl
           pciutils
           pv
-          telnet
+          inetutils
           gitui
           tldr
           tmux
