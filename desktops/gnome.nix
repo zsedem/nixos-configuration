@@ -61,6 +61,7 @@
       chrome-gnome-shell.enable = true;
   };
   programs = {
+      dconf.enable = true;
       geary.enable = false;
       seahorse.enable = false;
       gnome-documents.enable = false;
@@ -70,4 +71,5 @@
   services.packagekit.enable = false;
   services.udisks2.enable = true;
   environment.systemPackages = [ pkgs.gnome3.glib.dev pkgs.pinentry_gnome pkgs.gnome3.gnome-tweak-tool ];
+  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 }
