@@ -7,9 +7,16 @@ let
     plugins = with pkgs.vscode-extensions; [
       redhat.vscode-yaml
       zxh404.vscode-proto3
+      aws-toolkit-vscode
     #  ms-vsliveshare.vsliveshare
     ];
     onlyIf = pred: l: if pred then l else [];
+    aws-toolkit-vscode = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+              name = "aws-toolkit-vscode";
+              publisher = "AmazonWebServices";
+              version = "1.37.0";
+              sha256 = "0y9wsx9qlnz86bichkrr2f25nkkhmkksi85wvrd65kmp9mv52q48";
+            }];
     hocon = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
               name = "HOCON";
               publisher = "sabieber";
