@@ -2,7 +2,6 @@
 {
   imports =
     [
-      ./locals
       ./commons
       ./desktops/gnome.nix
       ./hardware/t470.nix
