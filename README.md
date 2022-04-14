@@ -33,10 +33,12 @@ When setting up the `configuration.nix` in the installation process:
   environment.systemPackages = with pkgs; [
     awscli2           # Add any package only relevant to this installation
   ];
+
   # Just examples of values, which are respected by the zsedem-config channel
   zsedem.zoom = true;
   zsedem.scala = true;
   zsedem.kafka = true;
+  zsedem.certificatesFolder = ./certs;
   programs.java.enable = true;
 }
 ```
