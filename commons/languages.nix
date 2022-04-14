@@ -7,7 +7,6 @@ let
     plugins = with pkgs.vscode-extensions; [
       redhat.vscode-yaml
       zxh404.vscode-proto3
-      aws-toolkit-vscode
       hocon
     #  ms-vsliveshare.vsliveshare
     ];
@@ -25,6 +24,14 @@ let
               version = "0.0.1";
               sha256 = "0mgyj7kxsx4acxc9nx63pwcwp9ckvrawj9pjln8wrnj5w9cdvbcv";
             };
+    kddejong = {
+      vscode-cfn-lint = vscode-extension {
+            name = "vscode-cfn-lint";
+            publisher = "kddejong";
+            version = "0.21.0";
+            sha256 = "1x7w97a34mbjx5pndlil7dhicjv2w0n58b60g5ibpvxlvy49grr2";
+        };
+    };
     tim-koehler = {
         helm-intellisense = vscode-extension {
             name = "helm-intellisense";
@@ -36,7 +43,7 @@ let
 in {
   options.zsedem =
     let flag = mkOption { type = types.bool; default = true; };
-    in { scala = flag; rust = flag; nix = flag; k8s = flag; py = flag; };
+    in { scala = flag; rust = flag; nix = flag; k8s = flag; py = flag; aws = flag; };
 
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
@@ -67,6 +74,9 @@ in {
             tim-koehler.helm-intellisense
         ] ++ onlyIf (flags.py) [
             ms-python.python
+        ] ++ onlyIf (flags.aws) [
+          kddejong.vscode-cfn-lint
+          python39Packages.cfn-lint
         ];
   };
 }
