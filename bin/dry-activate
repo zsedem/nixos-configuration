@@ -1,1 +1,2 @@
-NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix nixos-rebuild dry-activate
+#!/usr/bin/env fish
+nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) dry-activate

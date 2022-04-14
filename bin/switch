@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+cd (realpath (status dirname)/..)
+if git diff --quiet
+    git push
+    sudo nix-channel --update zsedem-config
+    sudo nixos-rebuild switch
+else
+    echo "Dirty Workspace"
+    exit 1
+end

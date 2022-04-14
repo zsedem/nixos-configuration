@@ -8,28 +8,30 @@ let
       redhat.vscode-yaml
       zxh404.vscode-proto3
       aws-toolkit-vscode
+      hocon
     #  ms-vsliveshare.vsliveshare
     ];
     onlyIf = pred: l: if pred then l else [];
-    aws-toolkit-vscode = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+    vscode-extension = settings: head (pkgs.vscode-utils.extensionsFromVscodeMarketplace [settings]);
+    aws-toolkit-vscode = vscode-extension {
               name = "aws-toolkit-vscode";
               publisher = "AmazonWebServices";
               version = "1.37.0";
               sha256 = "0y9wsx9qlnz86bichkrr2f25nkkhmkksi85wvrd65kmp9mv52q48";
-            }];
-    hocon = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+            };
+    hocon = vscode-extension {
               name = "HOCON";
               publisher = "sabieber";
               version = "0.0.1";
               sha256 = "0mgyj7kxsx4acxc9nx63pwcwp9ckvrawj9pjln8wrnj5w9cdvbcv";
-            }];
+            };
     tim-koehler = {
-        helm-intellisense = head (pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        helm-intellisense = vscode-extension {
             name = "helm-intellisense";
             publisher = "tim-koehler";
             version = "0.13.2";
             sha256 = "0g320yzmlb3gy18h4xvzzcxpbf16984ddvpkdizp0l9di4jzd1c8";
-        }]);
+        };
     };
 in {
   options.zsedem =
@@ -38,53 +40,33 @@ in {
 
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
-        onlyIf (flags.scala) [
+        plugins ++ [vscode] ++ onlyIf (flags.scala) [
             (sbt.override { jre = jdk; })
             jdk
             scalafmt
-            (import ../packages/vscode.nix {
-                inherit pkgs;
-                name = "scala";
-                plugins = plugins ++ hocon ++ [ scala-lang.scala scalameta.metals ];
-            })
+            scala-lang.scala
+            scalameta.metals
         ] ++ onlyIf (flags.rust) [
             rustup
             gcc
             llvmPackages.bintools-unwrapped
             cmakeMinimal
-            (import ../packages/vscode.nix {
-                inherit pkgs;
-                name = "rs";
-                plugins = plugins ++ hocon ++ [ tamasfe.even-better-toml serayuzgur.crates matklad.rust-analyzer ];
-            })
+            tamasfe.even-better-toml
+            serayuzgur.crates
+            matklad.rust-analyzer
         ] ++ onlyIf (flags.nix) [
             nix-prefetch-git
             nixpkgs-fmt
             rnix-lsp
-            (import ../packages/vscode.nix {
-                inherit pkgs;
-                name = "nix";
-                plugins = plugins ++ [ bbenoist.nix jnoortheen.nix-ide ];
-            })
+            bbenoist.nix
+            jnoortheen.nix-ide
         ] ++ onlyIf (flags.k8s) [
             kind
             kubectl
             kubernetes-helm
-            (import ../packages/vscode.nix {
-                inherit pkgs;
-                name = "kube";
-                plugins = plugins ++ [
-                    tim-koehler.helm-intellisense
-                ];
-            })
+            tim-koehler.helm-intellisense
         ] ++ onlyIf (flags.py) [
-            (import ../packages/vscode.nix {
-                inherit pkgs;
-                name = "py";
-                plugins = plugins ++ [
-                    ms-python.python
-                ];
-            })
+            ms-python.python
         ];
   };
 }

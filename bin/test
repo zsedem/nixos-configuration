@@ -1,1 +1,4 @@
-sudo NIXOS_CONFIG=$HOME/projects/nixos-configuration/configuration.nix  nixos-rebuild test
+#!/usr/bin/env fish
+set COMMAND nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) test
+echo $COMMAND
+sudo $COMMAND
