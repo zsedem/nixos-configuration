@@ -7,6 +7,7 @@
   imports = [
     <nixos-hardware/lenovo/thinkpad/t470s>
   ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   services.throttled.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
@@ -18,19 +19,10 @@
       STOP_CHARGE_THRESH_BAT1 = 80;
     };
   };
-  services.fstrim.enable = true; # This for the SSD TRIM
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   networking.hostName = "azsigmond-t470";
   hardware.opengl.enable = true;
-  #hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiIntel
-    libvdpau-va-gl
-    vaapiVdpau
-    #intel-ocl
-  ];
-  #hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel libvdpau-va-gl vaapiVdpau ];
 
   hardware.bluetooth.enable = true;
 }

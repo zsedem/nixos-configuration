@@ -12,6 +12,17 @@ during rebuild if you just copy-paste it.
 To make it easier to add certificates the `commons/nixos/certs.nix`
 is created to import all certificates added to the certs folder
 
+## Java jks setup with custom certificates
+
+`commons/java.nix` contains a hacky way to always use custom
+certificates added to the config. (Works with the above helper)
+
+## Btrfs snapshots with snapper
+
+The config in `disk-setup/btrfs-with-snapper.nix` defines a system
+installed on btrfs subvolumes and uses snapperd to create snapshots
+automatically for easier.
+
 ## Using this repository as a channel (as I use it on my personal machine)
 When setting up the `configuration.nix` in the installation process:
 1. Add Channels
@@ -28,17 +39,18 @@ When setting up the `configuration.nix` in the installation process:
 {
   imports = [
     <zsedem-config/configuration.nix>
-    ./hardware-configuration.nix
-  ];
-  environment.systemPackages = with pkgs; [
-    awscli2           # Add any package only relevant to this installation
+    <zsedem-config/disk-setup/btrfs-with-snapper.nix>
+    <zsedem-config/hardware/t470.nix>
   ];
 
-  # Just examples of values, which are respected by the zsedem-config channel
-  zsedem.zoom = true;
-  zsedem.scala = true;
-  zsedem.kafka = true;
+  boot.initrd.luks.devices."BtrfsRoot".device = "/dev/nvme0n1p2";
+  zsedem.btrfs-root = "/dev/mapper/BtrfsRoot";
   zsedem.certificatesFolder = ./certs;
+
+  fileSystems."/boot" = { ... };
+
+  zsedem.zoom = true;
+  zsedem.kafka = true;
   programs.java.enable = true;
 }
 ```
