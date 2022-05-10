@@ -2,6 +2,7 @@
 
 with lib;
 let
+    pkgs-stable = (import <nixpkgs> { config = config.nixpkgs.config; });
     pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
     flags = config.zsedem;
     plugins = with pkgs.vscode-extensions; [
@@ -47,7 +48,7 @@ in {
 
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
-        plugins ++ [vscode] ++ onlyIf (flags.scala) [
+        plugins ++ [pkgs-stable.vscode] ++ onlyIf (flags.scala) [
             (sbt.override { jre = jdk; })
             jdk
             scalafmt
