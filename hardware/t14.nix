@@ -14,8 +14,6 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "azsigmond-t14";
   nix.maxJobs = lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  services.throttled.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
