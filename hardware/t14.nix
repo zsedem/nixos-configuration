@@ -24,4 +24,7 @@
       STOP_CHARGE_THRESH_BAT1 = 90;
     };
   };
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  security.pam.services.gdm-password.fprintAuth = true;
 }
