@@ -34,6 +34,13 @@ in {
         options = [ "ssd,space_cache,compress=lzo,noatime,nodiratime,subvol=@docker" ];
       };
 
+    fileSystems."/var/log" =
+      { device = btrfs-root-partition;
+        fsType = "btrfs";
+        options = [ "ssd,space_cache,compress=lzo,noatime,nodiratime,subvol=@logs" ];
+      };
+
+
 
     fileSystems."/home" =
       { device = btrfs-root-partition;
