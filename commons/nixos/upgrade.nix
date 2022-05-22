@@ -29,5 +29,13 @@
         fi
         '';
     startAt = "12:00";
+
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+  };
+  systemd.timers.nixos-upgrade = {
+    timerConfig = {
+      Persistent = true;
+    };
   };
 }
