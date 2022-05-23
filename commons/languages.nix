@@ -6,6 +6,8 @@ let
     pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
     flags = config.zsedem;
     plugins = with pkgs.vscode-extensions; [
+      usernamehw.errorlens
+      streetsidesoftware.code-spell-checker
       redhat.vscode-yaml
       zxh404.vscode-proto3
       hocon
