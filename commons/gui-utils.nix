@@ -18,6 +18,11 @@ in {
       vlc
     ] ++ (if (zoom-enabled) then [zoom-us] else []);
 
+    environment.extraSetup = ''
+      sed 's#Exec=firefox#Exec=${ ./scripts/firefox-magic.py }#g' $out/share/applications/firefox.desktop > $out/share/applications/xxx.desktop
+      mv $out/share/applications/xxx.desktop $out/share/applications/firefox.desktop
+    '';
+
     xdg.mime.defaultApplications = if (zoom-enabled) then {
       "x-scheme-handler/zoomtg" = "us.zoom.Zoom.desktop";
     } else {};
