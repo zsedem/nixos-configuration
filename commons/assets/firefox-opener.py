@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 import sys, os
 import time
+import json
+from urllib.parse import urlparse
 
 FIREFOX="/run/current-system/sw/bin/firefox"
+with open("/etc/firefox-opener-config.json") as fp:
+  CONFIG=json.load(fp)
+
+profiles = CONFIG["containers"]
+host_mapping = CONFIG["host-mapping"]
 
 def run():
   if len(sys.argv) == 1:
@@ -11,12 +18,18 @@ def run():
   temp = open("/tmp/firefox.container.chooser.html", "w")
   url = sys.argv[1]
   print(f"Openening {url}")
+  try:
+    netloc = urlparse(url).netloc
+    if netloc in host_mapping:
+      os.execv(FIREFOX, [FIREFOX, f'ext+container:name={host_mapping[netloc]}&url={url}'])
+  except ValueError:
+    print(f"Couldn't parse '{url}' as an url")
   temp.write(header(url))
   for profile in profiles:
     name = profile["name"]
     color = profile["color"]
     temp.write(f"""
-      <button type="button" class="btn btn-primary"
+      <button type="button" class="btn btn-primary" style="background-color: {color};"
         onClick="window.location.href = 'ext+container:name={name}&url={url}';"
       >{name}</button>
     """)
@@ -26,16 +39,6 @@ def run():
 
 
 
-# cat ~/.mozilla/firefox/vtehakby.default/containers.json | jq -cr ".identities | map(select(.public)| {name: .name, color: .color}) "
-profiles = [
-  {"name":"Hiya","color":"purple"},
-  {"name":"Personal","color":"red"},
-  {"name":"oem","color":"green"},
-  {"name":"aegis","color":"blue"},
-  {"name":"data","color":"orange"},
-  {"name":"Facebook","color":"toolbar"},
-  {"name":"app-brain","color":"yellow"}
-]
 def header(url):
    return """
       <!DOCTYPE html>

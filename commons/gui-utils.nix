@@ -1,30 +1,13 @@
 {config, lib, ...}:
-with lib;
 let
-  # I only follow the stable nixos release branch, because I want a stable OS, but
-  # when it comes to interactive tools, the newer the better.
   pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
-  zoom-enabled = config.zsedem.zoom;
 in {
-  options.zsedem.zoom = mkOption { type = types.bool; default = false; };
-
-  config = mkIf zoom-enabled {
-    environment.systemPackages = with pkgs; [
-      flameshot
-      postman
-      firefox
-      google-chrome
-      deluge
-      vlc
-    ] ++ (if (zoom-enabled) then [zoom-us] else []);
-
-    environment.extraSetup = ''
-      sed 's#Exec=firefox#Exec=${ ./scripts/firefox-magic.py }#g' $out/share/applications/firefox.desktop > $out/share/applications/xxx.desktop
-      mv $out/share/applications/xxx.desktop $out/share/applications/firefox.desktop
-    '';
-
-    xdg.mime.defaultApplications = if (zoom-enabled) then {
-      "x-scheme-handler/zoomtg" = "us.zoom.Zoom.desktop";
-    } else {};
-  };
+  environment.systemPackages = with pkgs; [
+    flameshot
+    postman
+    firefox
+    google-chrome
+    deluge
+    vlc
+  ];
 }
