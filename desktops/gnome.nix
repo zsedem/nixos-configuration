@@ -66,6 +66,6 @@
   services.telepathy.enable = false;
   services.geoclue2.enable = false;
   services.udisks2.enable = true;
-  environment.systemPackages = [ pkgs.gnome3.glib.dev pkgs.pinentry_gnome pkgs.gnome3.gnome-tweak-tool ];
+  environment.systemPackages = [ pkgs.glib.dev pkgs.pinentry_gnome pkgs.gnome3.gnome-tweaks ];
   services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 }

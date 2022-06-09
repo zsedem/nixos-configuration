@@ -10,6 +10,4 @@ with pkgs;
   services.pipewire.jack.enable = true;
 
   security.rtkit.enable = true;
-  programs.noisetorch.enable = true;
-  environment.systemPackages = [ noisetorch ];
 }
