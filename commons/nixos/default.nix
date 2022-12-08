@@ -6,15 +6,15 @@
     ./certs.nix
   ];
   system = {
-    stateVersion = "22.05";
+    stateVersion = "22.11";
   };
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 20d";
     dates = "Mon 12:00:00";
   };
-  nix.allowedUsers = [ "@users" ];
-  nix.autoOptimiseStore = true;
+  nix.settings.allowed-users = [ "@users" ];
+  nix.settings.auto-optimise-store = true;
 
   nixpkgs.config = {
     allowUnfree = true;

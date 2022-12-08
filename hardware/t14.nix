@@ -16,7 +16,7 @@ in {
   hardware.bluetooth.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "azsigmond-t14";
-  nix.maxJobs = lib.mkDefault 4;
+  nix.settings.max-jobs = lib.mkDefault 4;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;

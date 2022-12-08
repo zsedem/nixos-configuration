@@ -55,7 +55,6 @@
       gnome-user-share.enable = false;
       gnome-online-accounts.enable = false;
       tracker.enable = false;
-      chrome-gnome-shell.enable = true;
   };
   programs = {
       dconf.enable = true;
