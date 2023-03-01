@@ -12,6 +12,7 @@ let
       redhat.vscode-yaml
       zxh404.vscode-proto3
       hocon
+      hangxingliu.vscode-nginx-conf-hint
     #  ms-vsliveshare.vsliveshare
     ];
     onlyIf = pred: l: if pred then l else [];
@@ -22,6 +23,14 @@ let
               version = "1.37.0";
               sha256 = "0y9wsx9qlnz86bichkrr2f25nkkhmkksi85wvrd65kmp9mv52q48";
             };
+    hangxingliu = {
+        vscode-nginx-conf-hint = vscode-extension {
+          name = "vscode-nginx-conf-hint";
+          publisher = "hangxingliu";
+          version = "0.3.0";
+          sha256 = "b7aaafdfd0a3929bdeb1a973ca2cb197295c5bd6a79ce0a64cba29a0ee7a399f";
+        };
+    };
     hocon = vscode-extension {
               name = "HOCON";
               publisher = "sabieber";
