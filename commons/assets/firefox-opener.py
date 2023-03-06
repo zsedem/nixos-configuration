@@ -3,6 +3,12 @@ import sys, os
 import time
 import json
 from urllib.parse import urlparse
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--name', dest="name")
+parser.add_argument('uri')
+parser.parse_args()
 
 FIREFOX="/run/current-system/sw/bin/firefox"
 with open("/etc/firefox-opener-config.json") as fp:
@@ -16,7 +22,8 @@ def run():
     os.execv(FIREFOX, [FIREFOX])
     return
   temp = open("/tmp/firefox.container.chooser.html", "w")
-  url = sys.argv[1]
+  parsed, unknown = parser.parse_known_args()
+  url = parsed.uri
   print(f"Openening {url}")
   try:
     netloc = urlparse(url).netloc
