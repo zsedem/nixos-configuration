@@ -60,7 +60,6 @@
       dconf.enable = true;
       geary.enable = false;
       seahorse.enable = false;
-      gnome-documents.enable = false;
   };
   services.telepathy.enable = false;
   services.geoclue2.enable = false;

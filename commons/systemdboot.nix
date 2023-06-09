@@ -2,7 +2,10 @@
 
 {
   boot = {
-    cleanTmpDir = true;
+    tmp = {
+      useTmpfs = true;
+      cleanOnBoot = true;
+    };
     loader.systemd-boot.enable = true;
   };
 }
