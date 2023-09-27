@@ -53,7 +53,7 @@
   services.gnome = {
       gnome-keyring.enable = true;
       gnome-user-share.enable = false;
-      gnome-online-accounts.enable = false;
+      gnome-online-accounts.enable = true;
       tracker.enable = false;
   };
   programs = {
