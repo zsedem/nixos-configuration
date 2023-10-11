@@ -60,7 +60,7 @@ in {
 
   config = with pkgs; with vscode-extensions; {
     environment.systemPackages =
-        plugins ++ [pkgs-stable.vscode] ++ onlyIf (flags.scala) [
+        plugins ++ [pkgs.vscode] ++ onlyIf (flags.scala) [
             (sbt.override { jre = choosen-jdk; })
             scalafmt
             scala-lang.scala
