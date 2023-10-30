@@ -4,7 +4,7 @@ let
 in {
   environment.systemPackages = with pkgs; [
     flameshot
-    postman
+#    postman
     firefox
     google-chrome
     deluge
