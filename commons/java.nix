@@ -6,7 +6,7 @@ with lib;
 with builtins;
 let
   certificateFiles = config.security.pki.certificateFiles;
-  choosen-jdk = (import <nixos-unstable> { config = config.nixpkgs.config; }).jdk17.override {};
+  choosen-jdk = (import <nixos-unstable> { config = config.nixpkgs.config; }).jdk21.override {};
 
   java-key-store = pkgs.stdenv.mkDerivation {
     name = "java-key-store";
@@ -32,6 +32,7 @@ let
   };
   java8 = pkgs.openjdk8;
   java17 = pkgs.openjdk17;
+  java21 = pkgs.openjdk21;
 in {
   config = mkIf config.programs.java.enable {
     programs.java.package = choosen-jdk;
@@ -44,6 +45,7 @@ in {
     environment.extraSetup = ''
       ln -s ${java8}/lib/openjdk $out/lib/openjdk8
       ln -s ${java17}/lib/openjdk $out/lib/openjdk17
+      ln -s ${java21}/lib/openjdk $out/lib/openjdk21
     '';
   };
 }
