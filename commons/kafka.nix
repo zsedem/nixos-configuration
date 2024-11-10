@@ -9,7 +9,7 @@ in {
   config = {
     environment.systemPackages = with pkgs; 
         if (kafka-enabled) 
-        then [apacheKafka kafkacat] 
+        then [apacheKafka kcat] 
         else [];
 
     networking = if (kafka-enabled)
