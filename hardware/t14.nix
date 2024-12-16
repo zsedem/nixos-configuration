@@ -12,16 +12,15 @@ in {
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernelPackages = latest-pkgs.linuxPackages_zen;
   boot.extraModulePackages = [ ];
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [
     amdvlk
   ];
-  hardware.opengl.extraPackages32 = with pkgs; [
+  hardware.graphics.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "azsigmond-t14";

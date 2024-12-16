@@ -6,7 +6,7 @@
     ./certs.nix
   ];
   system = {
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
   nix.gc = {
     automatic = true;
@@ -41,7 +41,7 @@
 
   time.timeZone = "Europe/Budapest";
 
-  programs.bash.enableCompletion = true;
+  programs.bash.completion.enable = true;
   networking.firewall.allowedUDPPortRanges = [
     { from = 27960; to = 27969; } # Urban terror
   ];

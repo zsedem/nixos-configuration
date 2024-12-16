@@ -54,7 +54,7 @@
       gnome-keyring.enable = true;
       gnome-user-share.enable = false;
       gnome-online-accounts.enable = true;
-      tracker.enable = false;
+      tinysparql.enable = false;
   };
   programs = {
       dconf.enable = true;
@@ -64,6 +64,6 @@
   services.telepathy.enable = false;
   services.geoclue2.enable = false;
   services.udisks2.enable = true;
-  environment.systemPackages = [ pkgs.glib.dev pkgs.pinentry-gnome3 pkgs.gnome3.gnome-tweaks ];
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+  environment.systemPackages = [ pkgs.glib.dev pkgs.pinentry-gnome3 pkgs.gnome-tweaks ];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 }
