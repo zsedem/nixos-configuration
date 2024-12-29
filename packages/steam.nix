@@ -4,8 +4,17 @@ let
   zs-steam-enabled = config.zsedem.steam-enabled;
 in {
   options.zsedem.steam-enabled = mkOption { type = types.bool; default = false; };
-  config = mkIf (zs-steam-enabled) {
-    programs = {
+  config = {
+    users.extraUsers.zsedem = {
+      isNormalUser = true;
+      home = "/home/zsedem";
+      createHome = true;
+      description = "ZsEdem Steam";
+      extraGroups = [ "networkmanager" ];
+      initialPassword = "titkos";
+      uid = 1002;
+    };
+    programs = mkIf (zs-steam-enabled) {
       steam = {
         enable = true;
         remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -18,20 +27,8 @@ in {
         capSysNice = true;
       };
     };
-    services.getty.autologinUser = "zsedem";
-    environment = {
+    environment = mkIf (zs-steam-enabled) {
       systemPackages = [ pkgs.mangohud ];
-      loginShellInit = ''
-        [[ "$(tty)" = "/dev/tty1" ]] && ./gs.sh
-      '';
-    };
-
-    users.extraUsers.zsedem = {
-      isNormalUser = true;
-      description = "ZsEdem Steam";
-      extraGroups = [ "networkmanager" ];
-      initialPassword = "titkos";
-      uid = 1002;
     };
   };
 }

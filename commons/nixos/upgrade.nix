@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  systemd.services.nixos-upgrade = {
+  systemd.services.nixos-upgrade = lib.mkIf (!config.zsedem.steam-enabled) {
     description = "Custom NixOS Upgrade";
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
