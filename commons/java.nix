@@ -5,7 +5,7 @@ with builtins;
 let
   certificateFiles = config.security.pki.certificateFiles;
 
-  make-java-with-certs = base-jdk: pkgs.stdenv.mkDerivation ({
+  make-java-with-certs = base-jdk: pkgs.stdenv.mkDerivation (finalAttrs: {
     name = "${base-jdk.name}";
 
     srcs = certificateFiles;
@@ -20,7 +20,8 @@ let
       cp -r ${base-jdk}/* $out/
 
       # Make the cacerts file writable and update it
-      chmod +w $out/lib/openjdk/lib/security/cacerts
+      chmod -R +w $out
+      ln -sf $out/lib/openjdk/lib/src.zip $out/lib/src.zip
       '' + (concatStringsSep "\n" (map (file: ''
         $out/bin/keytool -importcert \
           -noprompt \
@@ -28,12 +29,15 @@ let
           -keystore "$out/lib/openjdk/lib/security/cacerts" \
           -storepass changeit \
           -file ${file}
-      '') certificateFiles));
+      '') certificateFiles)) + ''
+      chmod -R -w $out
+      '';
 
     # Preserve all attributes from the original JDK
     meta = base-jdk.meta or {};
-    passthru = base-jdk.passthru or {};
-    home = "$out";
+    passthru = base-jdk.passthru // {
+      home = "${finalAttrs.finalPackage}/lib/openjdk";
+    };
   });
 
   java11 = make-java-with-certs pkgs.openjdk11;
