@@ -6,11 +6,10 @@ let
   certificateFiles = config.security.pki.certificateFiles;
 
   make-java-with-certs = base-jdk: pkgs.stdenv.mkDerivation ({
-    name = "java-with-certs-${base-jdk.name}";
+    name = "${base-jdk.name}";
 
     srcs = certificateFiles;
     phases = "installPhase";
-    nativeBuildInputs = [ base-jdk ];
     installPhase = ''
       if ! [ -d ${base-jdk}/lib/openjdk ]; then
         echo "Update trust store update to handle jdk other than openjdk"
