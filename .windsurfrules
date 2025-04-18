@@ -1,0 +1,26 @@
+This is a nixos configuration repository. It is personalized for me. Most of the configuration
+describes how my machine is set up. Whenever we make changes here, make sure to understand
+the consequences of the changes to the operating system.
+
+An example is, when you remove a package from the systemPackages, make sure to explicitly
+note that in your summary at the end, that package will no longer be installed.
+
+You can use the
+```
+nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) dry-activate
+```
+oneliner to test our changes.
+The expected output for a successful run is
+> Failed to start transient service unit: Interactive authentication required.
+> Error: switch-to-configuration must be run as the root user
+> warning: error(s) occurred while switching to the new configuration
+
+Because we don't run the command with root priviliges we get this output and it is fine.
+
+NEVER offer to run the command with root priviliges. (meaning: do not offer to run commands with `sudo`)
+
+Offer to make a git commit after we did a meaningful change. Include the whole message, like this:
+```
+git commit -am "<message>"
+```
+where your `<message>` should be a meaningful description of the change.
