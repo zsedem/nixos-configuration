@@ -7,9 +7,10 @@ note that in your summary at the end, that package will no longer be installed.
 # After a change
 You can use the
 ```
-nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) dry-activate
+nixos-rebuild -I zsedem-config=(realpath .) dry-activate
 ```
 oneliner to test our changes.
+ALWAYS check the output of the command. and see if our changes need to be fixed.
 The expected output for a successful run is
 > Failed to start transient service unit: Interactive authentication required.
 > Error: switch-to-configuration must be run as the root user

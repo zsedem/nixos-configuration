@@ -21,7 +21,7 @@ certificates added to the config. (Works with the above helper)
 
 The config in `disk-setup/btrfs-with-snapper.nix` defines a system
 installed on btrfs subvolumes and uses snapperd to create snapshots
-automatically for easier.
+automatically for easier rollback.
 
 ## Using this repository as a channel (as I use it on my personal machine)
 When setting up the `configuration.nix` in the installation process:
