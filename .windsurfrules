@@ -4,7 +4,7 @@ the consequences of the changes to the operating system.
 
 An example is, when you remove a package from the systemPackages, make sure to explicitly
 note that in your summary at the end, that package will no longer be installed.
-
+# After a change
 You can use the
 ```
 nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) dry-activate
@@ -18,6 +18,8 @@ The expected output for a successful run is
 Because we don't run the command with root priviliges we get this output and it is fine.
 
 NEVER offer to run the command with root priviliges. (meaning: do not offer to run commands with `sudo`)
+
+Check ./Readme.md, if it needs to be updated. Only update the readme if we make changes to something general, like something with nixos options.
 
 Offer to make a git commit after we did a meaningful change. Include the whole message, like this:
 ```
