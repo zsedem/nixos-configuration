@@ -2,7 +2,7 @@
 cd (realpath (status dirname)/..)
 if git diff --quiet
     git push
-    sudo nix-channel --update zsedem-config
+    sudo nix-channel --update zsedem-config --option tarball-ttl 0
     sudo nixos-rebuild switch
 else
     echo "Dirty Workspace"
