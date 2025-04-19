@@ -9,5 +9,6 @@ in {
     google-chrome
     deluge
     vlc
+    cozy
   ];
 }
