@@ -1,13 +1,3 @@
-{ stdenv, writeText }:
-
-let
-    # generic     = builtins.readFile ./vimrc/general.vim;
-    # textediting = builtins.readFile ./vimrc/textediting.vim;
-    # plug        = import ./vimrc/pluginconfigurations.nix;
-    a = "";
-in
-
-''
 syntax on
 filetype on
 set breakindent
@@ -38,4 +28,3 @@ set wildignore+=*\\tmp\\*,*.hi,*.swp,*.swo,*.o,*.zip,.git,.cabal-sandbox,node_mo
 set mouse=""
 
 imap jj <ESC>
-''
