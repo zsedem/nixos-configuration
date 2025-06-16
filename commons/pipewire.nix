@@ -2,7 +2,7 @@
 
 with pkgs;
 {
-  hardware.pulseaudio.enable = false; # Use pipewire instead
+  services.pulseaudio.enable = false; # Use pipewire instead
 
   services.pipewire.enable = true;
   services.pipewire.pulse.enable = true;

@@ -6,7 +6,7 @@
     ./certs.nix
   ];
   system = {
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
   nix.gc = {
     automatic = true;

@@ -6,8 +6,9 @@
     enableGhostscriptFonts = true;
     packages = [
       # fonts for gnome
-      pkgs.dejavu_fonts pkgs.cantarell-fonts
-      (pkgs.nerdfonts.override { fonts = [ "Monofur" ]; })
+      pkgs.dejavu_fonts
+      pkgs.cantarell-fonts
+      pkgs.nerd-fonts.monofur
     ];
   };
 }
