@@ -29,7 +29,7 @@ in
         (sbt.override { jre = choosen-jdk; })
         scalafmt
         coursier
-        ammonite
+        # ammonite
         jetbrains-toolbox
         bloop
       ]
