@@ -107,6 +107,7 @@ in
         usbutils
         xclip
         zip
+        devbox
       ]);
   };
   programs.fish.enable = true;
