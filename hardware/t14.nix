@@ -1,16 +1,28 @@
-{ config, lib, pkgs, mkDerivation, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  mkDerivation,
+  ...
+}:
 
 let
   latest-pkgs = (import <nixos-unstable> { config = config.nixpkgs.config; });
-in {
+in
+{
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     <nixos-hardware/lenovo/thinkpad/t14/amd>
   ];
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelPackages = latest-pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = [ ];
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [
