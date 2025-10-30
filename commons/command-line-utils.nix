@@ -78,7 +78,6 @@ in
       in
       (with pkgs; [
         batConfigured
-        bat-extras.batgrep
         delta
         dialog
         envsubst
@@ -92,10 +91,10 @@ in
         skimAlternatives
         jq
         gh
-        gitAndTools.gitFull
+        gitFull
         gnupg
         htop
-        oathToolkit
+        oath-toolkit
         openssl
         pciutils
         pv
