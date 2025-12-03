@@ -27,6 +27,7 @@ in
       [ pkgs.vscode ]
       ++ onlyIf (flags.scala) [
         (sbt.override { jre = choosen-jdk; })
+        (pkgs.ammonite.override { jre = choosen-jdk; })
         scalafmt
         coursier
         # ammonite

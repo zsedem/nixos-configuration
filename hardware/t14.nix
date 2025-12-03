@@ -25,13 +25,6 @@ in
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = [ ];
   hardware.graphics.enable32Bit = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    amdvlk
-  ];
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
-
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
