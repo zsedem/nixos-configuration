@@ -11,9 +11,8 @@
   ];
 
   services.xserver.enable = true;
-  services.displayManager.gdm = {
+  services.displayManager.sddm = {
     enable = true;
-    wayland = false; # Screensharing is broken, also flameshot does not work
   };
   services.desktopManager.gnome = {
     enable = true;
