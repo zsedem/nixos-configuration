@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+nixos-rebuild -I zsedem-config=(realpath (status dirname)/..) switch
